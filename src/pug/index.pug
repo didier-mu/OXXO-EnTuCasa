@@ -56,7 +56,15 @@ html(lang='es')
                             .sombrero__ruleta
                                 img.img-fluid#indicador(alt src='img/indicador.png')
                                 img.img-fluid#copa(alt src='img/V2.png')
-                                img.img-fluid#ala(alt src='img/V1.png')
+                                img.img-fluid#ala(alt src='https://oxxo-com.s3.amazonaws.com/media-library/72c9197dd952e8ac37c00e22edb435e5.png')
+                                
+            section#IrCupones
+                .container
+                    .row.justify-content-center
+                        .col-12
+                            a(href="https://www.oxxo.com/mis-cupones", target="_blank", rel="noopener noreferrer") 
+                                button.btnOn.btnOnBlanco Ver Mis cupones
+                            
 
             .modal.fade#modalDefault(data-backdrop='static' data-keyboard='false' role='dialog' tabindex='-1')
                 .modal-dialog.modal-dialog-centered(role='document')
@@ -84,10 +92,13 @@ html(lang='es')
                                 | Has ganado un cupón
 
                             img.img-fluid(src="img/mono2.png", alt="")
-                            //- img.img-fluid#cupon(alt src='img/cupon.jpg')
-
-                            a.linkCupon#cuponNormal(href='#')
-                                input.btnOn(type='button' value='Obtener cupón')
+                            
+                            .botonera-d-flex
+                                a.linkCupon(href='#')
+                                    input.btnOn(type='button' value='Ir a ruleta')
+                                
+                                a.linkCupon(href='#')
+                                    input.btnOn.btnOnBlanco(type='button' value='Ir a cupones')
 
                         .modal-body.modal-sesion
                             .cajaSesion

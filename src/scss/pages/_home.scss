@@ -70,6 +70,26 @@
     .closeModal{
         appearance: none;
     }
+    
+    #IrCupones{
+        background: $color-secundario;
+        padding: 0;
+        
+        a{
+            //max-width: 300px;    
+            margin: 10px auto;
+            display: block;
+            
+            .btnOn{
+                margin: 0;
+            }
+        }
+        
+    }
+    
+    .modal#modalCupon input[type=button]{
+        min-width: auto;
+    }
 }
 
 .ruletaSombrero, .proximamente{
@@ -146,6 +166,10 @@
         background: url(https://oxxo-com.s3.amazonaws.com/media-library/27f2b3a9cc097be4cee71ecb211041f6.png) no-repeat;
         background-position: center calc(90px - 200 * ((100vw - 320px) / 420));
         background-size: 100% calc(180px + 300 * ((100vw - 320px) / 420));
+        
+        .col-lg-8{
+            padding: 0;
+        }
     }
 
     .sombrero{
@@ -176,11 +200,11 @@
 
             #indicador{
                 position: absolute;
-                top:  calc(0px - 120 * ((100vw - 320px) / 992));
+                top:  calc(30px - 120 * ((100vw - 320px) / 992));
                 left: 0;
                 right: 0;
                 margin: auto;
-                width: 16%;
+                width: 15%;
                 max-width: 100px;
                 z-index: 9;
             }

@@ -1,188 +1,192 @@
 $(document).ready(function() {
 
-
     $("html").css("opacity", "1");
 
     /////////// VALIDACION FORMULARIOS CONTACTO ///////////
 
-    // $("#modalCuponEspecial").modal().show;
 
     // VALIDAR FORM HOME
 
-    $('.botonera a').on("click", function (e) {
+    $('.botonera a').on("click", function(e) {
 
         // CHECKBOX
-            if($(this).parents(".cajaSesion").find('.checkL').prop("checked") == false){
-               $('.msjError').remove();
-               $('.cajaL').append('<span class="msjError"> Debes aceptar los términos y condiciones. </span>');
-               e.preventDefault();
-            }
-        
-            else if($(this).parents(".cajaSesion").find('.checkE').prop("checked") == false){
-                $('.msjError').remove();
-                $('.cajaEdad').append('<span class="msjError"> Debes ser mayor de 18 años </span>');
-                e.preventDefault();
-            }
-        
-            else {
-                $('.cajaL .msjError').remove();
-                $('.cajaEdad .msjError').remove();
-				document.cookie = "feria=1";
-            }
-        
-           
-           
-           // VALIDATE ALL
-
-           if ($('.cajaSesion .error-input').length == 0) {
-               // window.location.href = "thankyoupage.html"
-           }
-       
-   });
+        if ($(this).parents(".cajaSesion").find('.checkL').prop("checked") == false) {
+            $('.msjError').remove();
+            $('.cajaL').append('<span class="msjError"> Debes aceptar los términos y condiciones. </span>');
+            e.preventDefault();
+        } else if ($(this).parents(".cajaSesion").find('.checkE').prop("checked") == false) {
+            $('.msjError').remove();
+            $('.cajaEdad').append('<span class="msjError"> Debes ser mayor de 18 años </span>');
+            e.preventDefault();
+        } else {
+            $('.cajaL .msjError').remove();
+            $('.cajaEdad .msjError').remove();
+            document.cookie = "feria=1";
+        }
 
 
-   $(".checkmark").on("click", function () {
-        
-       if($(this).siblings('input').prop("checked") == false){
-           $('.msjError').remove();
-           $(this).siblings('input').attr("checked","checked");
-       }
-       
-       else {
+
+        // VALIDATE ALL
+
+        if ($('.cajaSesion .error-input').length == 0) {
+            // window.location.href = "thankyoupage.html"
+        }
+
+    });
+
+
+    $(".checkmark").on("click", function() {
+
+        if ($(this).siblings('input').prop("checked") == false) {
+            $('.msjError').remove();
+            $(this).siblings('input').attr("checked", "checked");
+        } else {
             $(this).siblings('input').removeAttr("checked");
-       }
-   });
+        }
+    });
 
-    
+
+        function initLogin() {
+            if (window.jQuery) {
+                if ($("#logout_btn").length == 1) {
+
+                    if (getCookie("feria") == 1) {
+
+                        $('.linkCupon').on("click", function() {
+                            linkfinal = "/promoxxo/getcoupon/" + prm2;
+                            window.location.href = linkfinal;
+
+                        });
+                    } else {
+                        $('.linkCupon').on("click", function() {
+                            $(".modal-felicidades").hide(1);
+                            $('.linkContinuar').show(1);
+                            $(".linkredfb").hide(1);
+                            $(".linkred").hide(1);
+                            $(".modal-sesion").show(1);
+                        });
+                    }
+                } else {
+                    $('.linkCupon').on("click", function() {
+                        $(".modal-felicidades").hide(1);
+                        $('.linkContinuar').hide(1);
+                        $(".linkredfb").show(1);
+                        $(".linkred").show(1);
+                        $(".modal-sesion").show(1);
+                    });
+
+                }
+            } else {
+                setTimeout(function() {
+                    initLogin();
+                }, 2);
+            }
+        }
+		
     //// GIRO
-    
+
     var urlCupon;
 
     function randomCupon() {
         $("#ala").addClass("giroActivo");
-		
-        var x = Math.floor((Math.random() * 30) + 2);
-		if(prm==true)
-		{
-			x=1;
-		}
-      //   var x = 1;
+
+         var x = Math.floor((Math.random() * 7) + 2);
+       // var x = Math.floor((Math.random() * (30 - 1)) + 1);
+       //  var x =10 ;
+
+
+        if (prm == true) {
+            x = 3;
+        }
+        //   var x = 1;
 
         console.log(x);
         $('#botonGirar').off();
 
+        var resp = initLogin();
 
-        function initLogin() {
-            if(window.jQuery){
-                if($("#logout_btn").length==1){
-					
-                    if(getCookie("feria")==1){
 
-                        $('.linkCupon').on("click", function () {
-			                linkfinal= "/promoxxo/getcoupon/d79b2f692c44897e27b8f1a93fe7b10c";
-                            window.location.href = linkfinal;
-                            
-                        });
-                    }else{
-						$('.linkCupon').on("click", function () {
-                        $(".modal-felicidades").hide(1);
-						$('.linkContinuar').show(1);
-						$(".linkredfb").hide(1);
-						$(".linkred").hide(1);
-                        $(".modal-sesion").show(1);
-                    });
-					}
-                }
-                else{
-                    $('.linkCupon').on("click", function () {
-                        $(".modal-felicidades").hide(1);
-						$('.linkContinuar').hide(1);
-						$(".linkredfb").show(1);
-						$(".linkred").show(1);
-                        $(".modal-sesion").show(1);
-                    });
-                    
-                }
-            }
-            else{
-                setTimeout(function(){
-                    initLogin();
-                },2);
-            }
-        }
-
-        var resp=initLogin();
-
-        
-        setTimeout(function () {
+        setTimeout(function() {
             switch (x) {
 
                 /// CUPOON ESPECIAL
                 case 1:
-                    $("#ala").addClass("giro2");
-                    $("#cupon").attr("src","https://oxxo-com.s3.amazonaws.com/cupones/aa573d1a63edfa3eda0a62cd975bf62a.jpg");
-                    urlCupon = "/1";
+                    $("#ala").addClass("giro4");
 
-                    setTimeout(function () {
+                    $(".linkredfb").attr("href", "/cuponera/facebook/67a34dcd64c8eaa77dcab5a9c16cbeba");
+                    $(".linkred").attr("href", "/cuponera/google/67a34dcd64c8eaa77dcab5a9c16cbeba");
+                    if ($("#logout_btn").length == 1) {
+                        if (getCookie("feria") == 1) {
+                            $('.linkCupon').on("click", function() {
+                                linkfinal = "/promoxxo/getcoupon/67a34dcd64c8eaa77dcab5a9c16cbeba";
+                                window.location.href = linkfinal;
+                            });
+                        } else {
+                            $(".linkContinuar").attr("href", "/promoxxo/getcoupon/67a34dcd64c8eaa77dcab5a9c16cbeba");
+                        }
+                    }
+                    prm = false;
+                    setTimeout(function() {
                         $("#modalCuponEspecial").modal("show");
                     }, 5500);
 
                     break;
-                
-                /// CUPON NORMAL
+
+                    /// CUPON NORMAL
+
                 case 2:
                     $("#ala").addClass("giro4");
-                    $("#cupon").attr("src","https://oxxo-com.s3.amazonaws.com/cupones/cfb2c063828d29ab0e856db71c490846.jpg");
-                    urlCuponFb = "/promoxxo/getcoupon/1e951a3dcc7fb5a3a14ab4a7db7815c6";
-                    urlCuponGl= "/promoxxo/getcoupon/1e951a3dcc7fb5a3a14ab4a7db7815c6";
-					console.log(urlCupon);
-					$(".LinkCuponNormalFb").attr("href", urlCuponFb);
-                     $(".LinkCuponNormalGl").attr("href", urlCuponGl);
-                if($("#logout_btn").length==1){
-                    if(getCookie("feria")==1){
-                       
-					   
-					   $('.linkCupon').on("click", function () {
-							linkfinal= "/promoxxo/getcoupon/d79b2f692c44897e27b8f1a93fe7b10c";
-                            window.location.href = linkfinal;
-                            
-                        });
-					   
-                    }else{
-			          $(".linkContinuar").attr("href", urlCupon);
-		            }
-                   
-					}
-                    setTimeout(function () {
+                    $("#cupon").attr("src", "https://oxxo-com-dev.s3.amazonaws.com/cupones/f3208c5de35728d600773aec34424a6c.jpg");
+                    urlCuponFb = "/cuponera/facebook/20419f9deba87278a7292be962d8684b";
+                    urlCuponGl = "/cuponera/google/20419f9deba87278a7292be962d8684b";
+                    console.log(urlCupon);
+                    $(".LinkCuponNormalFb").attr("href", urlCuponFb);
+                    $(".LinkCuponNormalGl").attr("href", urlCuponGl);
+                    if ($("#logout_btn").length == 1) {
+                        if (getCookie("feria") == 1) {
+
+
+                            $('.linkCupon').on("click", function() {
+                                linkfinal = "/promoxxo/getcoupon/20419f9deba87278a7292be962d8684b";
+                                window.location.href = linkfinal;
+
+                            });
+
+                        } else {
+                            $(".linkContinuar").attr("href", urlCupon);
+                        }
+
+                    }
+                    setTimeout(function() {
                         $("#modalCupon").modal("show");
-                    }, 5500);
+                    }, 5000);
 
                     break;
-					
-				 case 3:
+
+                case 3:
                     $("#ala").addClass("giro4");
-                    $("#cupon").attr("src","https://oxxo-com.s3.amazonaws.com/cupones/b3f92710ad3f345f507ce017ad5111e3.jpg");
-                    urlCuponFb = "/promoxxo/getcoupon/6aae7f06169d711d86d8a0d22660d9b4";
-                    urlCuponGl= "/promoxxo/getcoupon/6aae7f06169d711d86d8a0d22660d9b4";
-					console.log(urlCupon);
-					$(".LinkCuponNormalFb").attr("href", urlCuponFb);
-                     $(".LinkCuponNormalGl").attr("href", urlCuponGl);
-                if($("#logout_btn").length==1){
-                    if(getCookie("feria")==1){
-                       
-					   
-					   $('.linkCupon').on("click", function () {
-							linkfinal= "/promoxxo/getcoupon/fb34e238cfcf702b6380a43dd7cb308e";
-                            window.location.href = linkfinal;
-                            
-                        });
-					   
-                    }else{
-			          $(".linkContinuar").attr("href", urlCupon);
-		            }
-                   
-					}
-                    setTimeout(function () {
+                    $("#cupon").attr("src", "https://oxxo-com-dev.s3.amazonaws.com/cupones/76e8636e65c27acb9f880cbe8c5232e8.jpg");
+                    urlCuponFb = "/cuponera/facebook/aaa36669f884d18d8ca3f7e59fa1c507";
+                    urlCuponGl = "/cuponera/google/aaa36669f884d18d8ca3f7e59fa1c507";
+                    console.log(urlCupon);
+                    $(".LinkCuponNormalFb").attr("href", urlCuponFb);
+                    $(".LinkCuponNormalGl").attr("href", urlCuponGl);
+                    if ($("#logout_btn").length == 1) {
+                        if (getCookie("feria") == 1) {
+
+
+                            $('.linkCupon').on("click", function() {
+                                linkfinal = "/promoxxo/getcoupon/aaa36669f884d18d8ca3f7e59fa1c507";
+                                window.location.href = linkfinal;
+
+                            });
+
+                        } else {
+                            $(".linkContinuar").attr("href", urlCupon);
+                        }
+
+                    }
+                    setTimeout(function() {
                         $("#modalCupon").modal("show");
                     }, 5000);
 
@@ -190,356 +194,95 @@ $(document).ready(function() {
 
                 case 4:
                     $("#ala").addClass("giro4");
-                    $("#cupon").attr("src","https://oxxo-com.s3.amazonaws.com/cupones/392d5194feb114dc903610035681bc5a.jpg");
-                    urlCuponFb = "/promoxxo/getcoupon/d9f29f45e144cd0cd5f13e37bb17f8ca";
-                    urlCuponGl= "/promoxxo/getcoupon/d9f29f45e144cd0cd5f13e37bb17f8ca";
-					console.log(urlCupon);
-					$(".LinkCuponNormalFb").attr("href", urlCuponFb);
-                     $(".LinkCuponNormalGl").attr("href", urlCuponGl);
-                if($("#logout_btn").length==1){
-                    if(getCookie("feria")==1){
-                       
-					   
-					   $('.linkCupon').on("click", function () {
-							linkfinal= "/promoxxo/getcoupon/d9f29f45e144cd0cd5f13e37bb17f8ca";
-                            window.location.href = linkfinal;
-                            
-                        });
-					   
-                    }else{
-			          $(".linkContinuar").attr("href", urlCupon);
-		            }
-                   
-					}
-                    setTimeout(function () {
+                    $("#cupon").attr("src", "https://oxxo-com-dev.s3.amazonaws.com/cupones/35ca7b3a3d408457b6256b450a27d5db.jpg");
+                    urlCuponFb = "/cuponera/facebook/2e63946b83ac23ab5903ce0815a214fa";
+                    urlCuponGl = "/cuponera/google/2e63946b83ac23ab5903ce0815a214fa";
+                    console.log(urlCupon);
+                    $(".LinkCuponNormalFb").attr("href", urlCuponFb);
+                    $(".LinkCuponNormalGl").attr("href", urlCuponGl);
+                    if ($("#logout_btn").length == 1) {
+                        if (getCookie("feria") == 1) {
+
+
+                            $('.linkCupon').on("click", function() {
+                                linkfinal = "/promoxxo/getcoupon/2e63946b83ac23ab5903ce0815a214fa";
+                                window.location.href = linkfinal;
+
+                            });
+
+                        } else {
+                            $(".linkContinuar").attr("href", urlCupon);
+                        }
+
+                    }
+                    setTimeout(function() {
                         $("#modalCupon").modal("show");
                     }, 5000);
 
                     break;
 
-                 case 5:
+                case 5:
                     $("#ala").addClass("giro4");
-                    $("#cupon").attr("src","https://oxxo-com.s3.amazonaws.com/cupones/3e7d6281de939745404e1c1c01c9cc24.jpg");
-                    urlCuponFb = "/promoxxo/getcoupon/c708dfdc2d89bf37995deb3b6061cc7e";
-                    urlCuponGl= "/promoxxo/getcoupon/c708dfdc2d89bf37995deb3b6061cc7e";
-					console.log(urlCupon);
-					$(".LinkCuponNormalFb").attr("href", urlCuponFb);
-                     $(".LinkCuponNormalGl").attr("href", urlCuponGl);
-                if($("#logout_btn").length==1){
-                    if(getCookie("feria")==1){
-                       
-					   
-					   $('.linkCupon').on("click", function () {
-							linkfinal= "/promoxxo/getcoupon/c708dfdc2d89bf37995deb3b6061cc7e";
-                            window.location.href = linkfinal;
-                            
-                        });
-					   
-                    }else{
-			          $(".linkContinuar").attr("href", urlCupon);
-		            }
-                   
-					}
-                    setTimeout(function () {
+                    $("#cupon").attr("src", "https://oxxo-com-dev.s3.amazonaws.com/cupones/8227a82a2a4a191b39b207c8e2e07f99.jpg");
+                    urlCuponFb = "/cuponera/facebook/5482d4691e07d192146379554e91a35c";
+                    urlCuponGl = "/cuponera/google/5482d4691e07d192146379554e91a35c";
+                    console.log(urlCupon);
+                    $(".LinkCuponNormalFb").attr("href", urlCuponFb);
+                    $(".LinkCuponNormalGl").attr("href", urlCuponGl);
+                    if ($("#logout_btn").length == 1) {
+                        if (getCookie("feria") == 1) {
+
+
+                            $('.linkCupon').on("click", function() {
+                                linkfinal = "/promoxxo/getcoupon/5482d4691e07d192146379554e91a35c";
+                                window.location.href = linkfinal;
+
+                            });
+
+                        } else {
+                            $(".linkContinuar").attr("href", urlCupon);
+                        }
+
+                    }
+                    setTimeout(function() {
                         $("#modalCupon").modal("show");
                     }, 5000);
 
                     break;
 
-                 case 6:
+                case 6:
                     $("#ala").addClass("giro4");
-                    $("#cupon").attr("src","https://oxxo-com.s3.amazonaws.com/cupones/3f4a02177012ac7349f4b50f573f89e8.jpg");
-                    urlCuponFb = "/promoxxo/getcoupon/c17fbe52357bedb7830eeee804b4dd4b";
-                    urlCuponGl= "/promoxxo/getcoupon/c17fbe52357bedb7830eeee804b4dd4b";
-					console.log(urlCupon);
-					$(".LinkCuponNormalFb").attr("href", urlCuponFb);
-                     $(".LinkCuponNormalGl").attr("href", urlCuponGl);
-                if($("#logout_btn").length==1){
-                    if(getCookie("feria")==1){
-                       
-					   
-					   $('.linkCupon').on("click", function () {
-							linkfinal= "/promoxxo/getcoupon/c17fbe52357bedb7830eeee804b4dd4b";
-                            window.location.href = linkfinal;
-                            
-                        });
-					   
-                    }else{
-			          $(".linkContinuar").attr("href", urlCupon);
-		            }
-                   
-					}
-                    setTimeout(function () {
+                    $("#cupon").attr("src", "https://oxxo-com-dev.s3.amazonaws.com/cupones/31cecba728fc70d08f49a42a484177f1.jpg");
+                    urlCuponFb = "/cuponera/facebook/3df8e6967dc88ee5198fb4b5092c5c49";
+                    urlCuponGl = "/cuponera/google/3df8e6967dc88ee5198fb4b5092c5c49";
+                    console.log(urlCupon);
+                    $(".LinkCuponNormalFb").attr("href", urlCuponFb);
+                    $(".LinkCuponNormalGl").attr("href", urlCuponGl);
+                    if ($("#logout_btn").length == 1) {
+                        if (getCookie("feria") == 1) {
+
+
+                            $('.linkCupon').on("click", function() {
+                                linkfinal = "/promoxxo/getcoupon/3df8e6967dc88ee5198fb4b5092c5c49";
+                                window.location.href = linkfinal;
+
+                            });
+
+                        } else {
+                            $(".linkContinuar").attr("href", urlCupon);
+                        }
+
+                    }
+                    setTimeout(function() {
                         $("#modalCupon").modal("show");
                     }, 5000);
 
                     break;
 
-                 case 7:
-                    $("#ala").addClass("giro4");
-                    $("#cupon").attr("src","https://oxxo-com.s3.amazonaws.com/cupones/");
-                    urlCuponFb = "/promoxxo/getcoupon/";
-                    urlCuponGl= "/promoxxo/getcoupon/";
-					console.log(urlCupon);
-					$(".LinkCuponNormalFb").attr("href", urlCuponFb);
-                     $(".LinkCuponNormalGl").attr("href", urlCuponGl);
-                if($("#logout_btn").length==1){
-                    if(getCookie("feria")==1){
-                       
-					   
-					   $('.linkCupon').on("click", function () {
-							linkfinal= "/promoxxo/getcoupon/";
-                            window.location.href = linkfinal;
-                            
-                        });
-					   
-                    }else{
-			          $(".linkContinuar").attr("href", urlCupon);
-		            }
-                   
-					}
-                    setTimeout(function () {
-                        $("#modalCupon").modal("show");
-                    }, 5000);
 
-                    break;
-
-                 case 8:
-                    $("#ala").addClass("giro4");
-                    $("#cupon").attr("src","https://oxxo-com.s3.amazonaws.com/cupones/ec417b543e0bca2211d379d76e7fa606.jpg");
-                    urlCuponFb = "/promoxxo/getcoupon/4eb952bdc5b7be49bb9e9cef8e547086";
-                    urlCuponGl= "/promoxxo/getcoupon/4eb952bdc5b7be49bb9e9cef8e547086";
-					console.log(urlCupon);
-					$(".LinkCuponNormalFb").attr("href", urlCuponFb);
-                     $(".LinkCuponNormalGl").attr("href", urlCuponGl);
-                if($("#logout_btn").length==1){
-                    if(getCookie("feria")==1){
-                       
-					   
-					   $('.linkCupon').on("click", function () {
-							linkfinal= "/promoxxo/getcoupon/4eb952bdc5b7be49bb9e9cef8e547086";
-                            window.location.href = linkfinal;
-                            
-                        });
-					   
-                    }else{
-			          $(".linkContinuar").attr("href", urlCupon);
-		            }
-                   
-					}
-                    setTimeout(function () {
-                        $("#modalCupon").modal("show");
-                    }, 5000);
-
-                    break;
-
-                 case 9:
-                    $("#ala").addClass("giro4");
-                    $("#cupon").attr("src","https://oxxo-com.s3.amazonaws.com/cupones/b3f92710ad3f345f507ce017ad5111e3.jpg");
-                    urlCuponFb = "/promoxxo/getcoupon/6aae7f06169d711d86d8a0d22660d9b4";
-                    urlCuponGl= "/promoxxo/getcoupon/6aae7f06169d711d86d8a0d22660d9b4";
-					console.log(urlCupon);
-					$(".LinkCuponNormalFb").attr("href", urlCuponFb);
-                     $(".LinkCuponNormalGl").attr("href", urlCuponGl);
-                if($("#logout_btn").length==1){
-                    if(getCookie("feria")==1){
-                       
-					   
-					   $('.linkCupon').on("click", function () {
-							linkfinal= "/promoxxo/getcoupon/fb34e238cfcf702b6380a43dd7cb308e";
-                            window.location.href = linkfinal;
-                            
-                        });
-					   
-                    }else{
-			          $(".linkContinuar").attr("href", urlCupon);
-		            }
-                   
-					}
-                    setTimeout(function () {
-                        $("#modalCupon").modal("show");
-                    }, 5000);
-
-                    break;
-
-                 case 10:
-                    $("#ala").addClass("giro4");
-                    $("#cupon").attr("src","https://oxxo-com.s3.amazonaws.com/cupones/73d875ce3981ffbfd190d116f901f00e.jpg");
-                    urlCuponFb = "/promoxxo/getcoupon/e8f990b1f0e8e4e84e80b8383ca211c8";
-                    urlCuponGl= "/promoxxo/getcoupon/e8f990b1f0e8e4e84e80b8383ca211c8";
-					console.log(urlCupon);
-					$(".LinkCuponNormalFb").attr("href", urlCuponFb);
-                     $(".LinkCuponNormalGl").attr("href", urlCuponGl);
-                if($("#logout_btn").length==1){
-                    if(getCookie("feria")==1){
-                       
-					   
-					   $('.linkCupon').on("click", function () {
-							linkfinal= "/promoxxo/getcoupon/e8f990b1f0e8e4e84e80b8383ca211c8";
-                            window.location.href = linkfinal;
-                            
-                        });
-					   
-                    }else{
-			          $(".linkContinuar").attr("href", urlCupon);
-		            }
-                   
-					}
-                    setTimeout(function () {
-                        $("#modalCupon").modal("show");
-                    }, 5000);
-
-                    break;
-
-                 case 11:
-                    $("#ala").addClass("giro4");
-                    $("#cupon").attr("src","https://oxxo-com.s3.amazonaws.com/cupones/b5fb91bed26a7151f7faeff07565d17d.jpg");
-                    urlCuponFb = "/promoxxo/getcoupon/0eb7ec646d2b2bb89760732a69eb6020";
-                    urlCuponGl= "/promoxxo/getcoupon/0eb7ec646d2b2bb89760732a69eb6020";
-					console.log(urlCupon);
-					$(".LinkCuponNormalFb").attr("href", urlCuponFb);
-                     $(".LinkCuponNormalGl").attr("href", urlCuponGl);
-                if($("#logout_btn").length==1){
-                    if(getCookie("feria")==1){
-                       
-					   
-					   $('.linkCupon').on("click", function () {
-							linkfinal= "/promoxxo/getcoupon/0eb7ec646d2b2bb89760732a69eb6020";
-                            window.location.href = linkfinal;
-                            
-                        });
-					   
-                    }else{
-			          $(".linkContinuar").attr("href", urlCupon);
-		            }
-                   
-					}
-                    setTimeout(function () {
-                        $("#modalCupon").modal("show");
-                    }, 5000);
-
-                    break;
-
-                 case 12:
-                    $("#ala").addClass("giro4");
-                    $("#cupon").attr("src","https://oxxo-com.s3.amazonaws.com/cupones/8b31734354f3b86aec071c005144cbb4.jpg");
-                    urlCuponFb = "/promoxxo/getcoupon/76b63971032dcfa0e44b38dd2755bc18";
-                    urlCuponGl= "/promoxxo/getcoupon/76b63971032dcfa0e44b38dd2755bc18";
-					console.log(urlCupon);
-					$(".LinkCuponNormalFb").attr("href", urlCuponFb);
-                     $(".LinkCuponNormalGl").attr("href", urlCuponGl);
-                if($("#logout_btn").length==1){
-                    if(getCookie("feria")==1){
-                       
-					   
-					   $('.linkCupon').on("click", function () {
-							linkfinal= "/promoxxo/getcoupon/76b63971032dcfa0e44b38dd2755bc18";
-                            window.location.href = linkfinal;
-                            
-                        });
-					   
-                    }else{
-			          $(".linkContinuar").attr("href", urlCupon);
-		            }
-                   
-					}
-                    setTimeout(function () {
-                        $("#modalCupon").modal("show");
-                    }, 5000);
-
-                    break;
-
-                 case 13:
-                    $("#ala").addClass("giro4");
-                    $("#cupon").attr("src","https://oxxo-com.s3.amazonaws.com/cupones/");
-                    urlCuponFb = "/promoxxo/getcoupon/";
-                    urlCuponGl= "/promoxxo/getcoupon/";
-					console.log(urlCupon);
-					$(".LinkCuponNormalFb").attr("href", urlCuponFb);
-                     $(".LinkCuponNormalGl").attr("href", urlCuponGl);
-                if($("#logout_btn").length==1){
-                    if(getCookie("feria")==1){
-                       
-					   
-					   $('.linkCupon').on("click", function () {
-							linkfinal= "/promoxxo/getcoupon/";
-                            window.location.href = linkfinal;
-                            
-                        });
-					   
-                    }else{
-			           $(".linkContinuar").attr("href", urlCupon);
-		            }
-                   
-					}
-                    setTimeout(function () {
-                        $("#modalCupon").modal("show");
-                    }, 5000);
-
-                    break;
-
-                case 14:
-                    $("#ala").addClass("giro4");
-                    $("#cupon").attr("src","https://oxxo-com.s3.amazonaws.com/cupones/");
-                    urlCuponFb = "/promoxxo/getcoupon/";
-                    urlCuponGl= "/promoxxo/getcoupon/";
-					console.log(urlCupon);
-					$(".LinkCuponNormalFb").attr("href", urlCuponFb);
-                     $(".LinkCuponNormalGl").attr("href", urlCuponGl);
-                if($("#logout_btn").length==1){
-                    if(getCookie("feria")==1){
-                       
-					   
-					   $('.linkCupon').on("click", function () {
-							linkfinal= "/promoxxo/getcoupon/fb34e238cfcf702b6380a43dd7cb308e";
-                            window.location.href = linkfinal;
-                            
-                        });
-					   
-                    }else{
-			           $(".linkContinuar").attr("href", urlCupon);
-		            }
-                   
-					}
-                    setTimeout(function () {
-                        $("#modalCupon").modal("show");
-                    }, 5000);
-
-                    break;
-
-                case 15:
-                    $("#ala").addClass("giro4");
-                    $("#cupon").attr("src","https://oxxo-com.s3.amazonaws.com/cupones/");
-                    urlCuponFb = "/promoxxo/getcoupon/";
-                    urlCuponGl= "/promoxxo/getcoupon/";
-					console.log(urlCupon);
-					$(".LinkCuponNormalFb").attr("href", urlCuponFb);
-                     $(".LinkCuponNormalGl").attr("href", urlCuponGl);
-                if($("#logout_btn").length==1){
-                    if(getCookie("feria")==1){
-                       
-					   
-					   $('.linkCupon').on("click", function () {
-							linkfinal= "/promoxxo/getcoupon/";
-                            window.location.href = linkfinal;
-                            
-                        });
-					   
-                    }else{
-			$(".linkContinuar").attr("href", urlCupon);
-		 }
-                   
-					}
-                    setTimeout(function () {
-                        $("#modalCupon").modal("show");
-                    }, 5000);
-
-                    break;					
-            
-                
                 default:
                     $("#ala").addClass("giro1");
-                    setTimeout(function () {
+                    setTimeout(function() {
                         $("#modalDefault").modal("show");
                     }, 5500);
 
@@ -548,10 +291,10 @@ $(document).ready(function() {
             }
         }, 0);
 
-        
+
     }
 
-    $('#botonGirar').on("click", function () {
+    $('#botonGirar').on("click", function() {
         randomCupon();
     });
 
@@ -562,60 +305,70 @@ $(document).ready(function() {
     //     $(".modal-felicidades").hide(1);
     // });
 
-    $('#modalDefault .btnOn, .closeModal').on("click", function () {
+    $('#modalDefault .btnOn, .closeModal').on("click", function() {
         $("#ala").attr("class", "img-fluid");
-       $('#botonGirar').on("click", randomCupon);
+        $('#botonGirar').on("click", randomCupon);
     });
-	$("#ObtCupon").click(function(){
-    $("#mycupon").attr("value", 1);
-  });
+    $("#ObtCupon").click(function() {
+        $("#mycupon").attr("value", 1);
+    });
 
-$("#formCupon").submit(function(){
-  console.log("entro");
-  });
+    $("#formCupon").submit(function() {
+        console.log("entro");
+    });
 
 });
 
-        function getCookie(cname){
-            var name=cname+"=";
-            var decodedCookie=decodeURIComponent(document.cookie);
-            var ca=decodedCookie.split(';');
-            for(var i=0;i<ca.length;i++){
-                var c=ca[i];
-                while(c.charAt(0)==' '){
-                c=c.substring(1);
-                }
-                if(c.indexOf(name)==0){
-                return c.substring(name.length,c.length);
-                }
-            }
-            return"";
+function getCookie(cname) {
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
         }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
 
-$(function(){
+$(function() {
     dato();
 });
-var prm=false;
-function dato(){
-$.ajax({
-     url: '/ws/PromocionCupon/getCoupons',
-     type: 'GET',
-     success: function(data){
-         if(data.estatus==1)
-         {
-            var js=JSON.parse(data.data);
-            if(js[0])
-            {
-				prm=true;
-                $(".linkredfb").attr("href", "/cuponera/facebook/"+js[0].id_cupon);
-			    $(".linkred").attr("href", "/cuponera/google/"+js[0].id_cupon);
-                $(".cuponEsp").attr("src", js[0].imagen_cupon);
+var prm = false;
+var prm2;
+function dato() {
+    $.ajax({
+        url: '/ws/PromocionCupon/getCoupons',
+        type: 'GET',
+        success: function(data) {
+            if (data.estatus == 1) {
+                var js = JSON.parse(data.data);
+                if (js[0]) {
+                    prm = true;
+					prm2 = js[0].id_cupon;
+                    $("#cupon").attr("src",  js[0].imagen_cupon);
+                    $(".linkredfb").attr("href", "/cuponera/facebook/" + js[0].id_cupon);
+                    $(".linkred").attr("href", "/cuponera/google/" + js[0].id_cupon);
+                    $(".cuponEsp").attr("src", js[0].imagen_cupon);
+                    if ($("#logout_btn").length == 1) {
+                        if (getCookie("feria") == 1) {
+                            $('.linkCupon').on("click", function() {
+                                linkfinal = "/promoxxo/getcoupon/"+ js[0].id_cupon;
+                                window.location.href = linkfinal;
+                            });
+                        } else {
+                            $(".linkContinuar").attr("href", "/promoxxo/getcoupon/"+ js[0].id_cupon);
+                        }
+                    }
+                } else {
+                    prm = false;
+                }
             }
-			else{
-				prm=false;
-			}
-         }
-     }
-});
+        }
+    });
 }
                             

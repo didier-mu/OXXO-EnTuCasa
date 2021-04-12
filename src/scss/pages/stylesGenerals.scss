@@ -3,6 +3,7 @@
 }
 
 .jumbotron{display:none;} 
+.modal h4, .modal h4 b{font-family:'Titillium Web' !important;}
 
 .homeSombrero, .ruletaSombrero, .thankyouDiageo, .proximamente{
    
@@ -46,7 +47,7 @@
     }
 
 
-    input[type="button"], input[type="submit"]{
+    input[type="button"], input[type="submit"], button{
         @include boton;
     }
 

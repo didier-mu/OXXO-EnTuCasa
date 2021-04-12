@@ -5,7 +5,9 @@
     <link rel="shortcut icon" href="img/logos/favicon.ico" type="image/x-icon">
     <title>Oxxo - En tu casa</title>
     <link rel="stylesheet" href="css/styles.min.css">
-    <script src="js/scripts.min.js" async defer></script>
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/scripts.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   </head>
   <body class="home">
@@ -45,8 +47,16 @@
         <div class="container">
           <div class="row justify-content-center">
             <div class="col-12 col-lg-10"><img class="img-fluid" id="botonGirar" alt src="img/GIRAR.png">
-              <div class="sombrero__ruleta"><img class="img-fluid" id="indicador" alt src="img/indicador.png"><img class="img-fluid" id="copa" alt src="img/V2.png"><img class="img-fluid" id="ala" alt src="img/V1.png"></div>
+              <div class="sombrero__ruleta"><img class="img-fluid" id="indicador" alt src="img/indicador.png"><img class="img-fluid" id="copa" alt src="img/V2.png"><img class="img-fluid" id="ala" alt src="https://oxxo-com.s3.amazonaws.com/media-library/72c9197dd952e8ac37c00e22edb435e5.png"></div>
             </div>
+          </div>
+        </div>
+      </section>
+      <section id="IrCupones">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-12"><a href="https://www.oxxo.com/mis-cupones" target="_blank" rel="noopener noreferrer"> 
+                <button class="btnOn btnOnBlanco">Ver Mis cupones</button></a></div>
           </div>
         </div>
       </section>
@@ -65,8 +75,10 @@
           <div class="modal-content">
             <div class="closeModal" aria-label="Close" data-dismiss="modal" type="button"><img class="img-fluid" alt src="https://oxxo-com.s3.amazonaws.com/media-library/47cb78aefa4753cd42e978980d39b014.png"></div>
             <div class="modal-body modal-felicidades">
-              <h4><b>¡Felicidades!</b><br>Has ganado un cupón</h4><img class="img-fluid" src="img/mono2.png" alt=""><a class="linkCupon" id="cuponNormal" href="#">
-                <input class="btnOn" type="button" value="Obtener cupón"></a>
+              <h4><b>¡Felicidades!</b><br>Has ganado un cupón</h4><img class="img-fluid" src="img/mono2.png" alt="">
+              <div class="botonera-d-flex"><a class="linkCupon" href="#">
+                  <input class="btnOn" type="button" value="Ir a ruleta"></a><a class="linkCupon" href="#">
+                  <input class="btnOn btnOnBlanco" type="button" value="Ir a cupones"></a></div>
             </div>
             <div class="modal-body modal-sesion">
               <div class="cajaSesion">
