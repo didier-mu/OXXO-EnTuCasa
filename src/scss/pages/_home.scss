@@ -1,0 +1,335 @@
+.homeSombrero, .ruletaSombrero, .thankyouDiageo, .proximamente{
+    background: url(https://oxxo-com.s3.amazonaws.com/media-library/719fffbde004ffaedeb9d70865b409fb.png) 10% 150px/30px no-repeat,
+                url(https://oxxo-com.s3.amazonaws.com/media-library/5eb64612c07bb9690a4d55c1d3862559.png) 10% 70px/15px no-repeat,
+                url(https://oxxo-com.s3.amazonaws.com/media-library/719fffbde004ffaedeb9d70865b409fb.png) 70% 350px/15px no-repeat,
+                url(https://oxxo-com.s3.amazonaws.com/media-library/5eb64612c07bb9690a4d55c1d3862559.png) 65% 320px/20px no-repeat,
+                url(https://oxxo-com.s3.amazonaws.com/media-library/719fffbde004ffaedeb9d70865b409fb.png) 10% 390px/15px no-repeat,
+                url(https://oxxo-com.s3.amazonaws.com/media-library/719fffbde004ffaedeb9d70865b409fb.png) 85% 380px/10px no-repeat,
+                url(https://oxxo-com.s3.amazonaws.com/media-library/719fffbde004ffaedeb9d70865b409fb.png) 90% 480px/10px no-repeat,
+                url(https://oxxo-com.s3.amazonaws.com/media-library/03d7d8a5650ad076b92dc14858ac5215.png) no-repeat left top / 400px,
+                url(https://oxxo-com.s3.amazonaws.com/media-library/341be04eb8d23156c739191228c4cdbe.png) no-repeat left 1000px / 400px,
+                url(https://oxxo-com.s3.amazonaws.com/media-library/e8020b8900cc1f525759f91731954c80.png) no-repeat right 300px / 350px $color-secundario;
+    font-family: $primaria-light;
+
+    /// CABECERA
+
+    .header{
+        padding: 30px 0 10px;
+        position: relative !important;
+        margin-bottom: 0px !important;
+
+        [class*="col-"]{
+            flex-direction: column; 
+            justify-content: center;
+        }
+
+        &--img{
+            padding:0;
+
+            img{
+                width: 60%;
+                max-width: 400px;
+                margin: auto;
+                display: block;
+            }
+        }
+    }    
+
+    /// JUEGOS
+
+    .bases{ 
+        padding: 20px 0 0;
+
+        h1{
+            font-family: $secundaria;
+            margin-bottom: 0px;
+            text-align: center;
+            color: #fff;
+            text-shadow: 2px 3px 2px #5f3333;
+            @include h1;
+            
+            br{
+                display: none;
+            }
+        }
+
+        h3{
+            font-family: $secundaria;
+            margin:0 auto 30px;
+            text-align: center;
+            color: #fff;
+            text-shadow: 2px 3px 2px #5f3333;
+
+            br{
+                display: none;
+            }
+        }
+        
+    }
+
+    .closeModal{
+        appearance: none;
+    }
+}
+
+.ruletaSombrero, .proximamente{
+    .bases{
+        img{
+            margin: 0px auto 0;
+        }
+
+        h2{
+            @include h3;
+            text-align: center;
+            color: #FFCC55;
+            text-transform: uppercase;
+        }
+
+        h6{
+            color: #fff;
+            text-align: center;
+            margin: 10px auto;
+        }
+
+        h3{
+            color: #fff;
+            text-align: center;
+            margin: 0px auto 30px;
+
+            &#titleBase{
+                margin: 20px auto;
+            }
+        }
+
+        ul{
+            padding: 0;
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-around;
+            counter-reset: pregunta;
+            margin: 0px auto 20px;
+            counter-reset: pregunta;
+
+            li{
+                color: $color-secundario;
+                text-align: center;
+                list-style: none;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+                flex-basis: 33%;
+                @include h5;
+                font-weight: bold;
+                
+
+                &:before {
+                    counter-increment:pregunta;
+                    content:counter(pregunta);
+                    display: flex;
+                    color: #fff;
+                    justify-content: center;
+                    align-items: center;
+                    width: calc(60px + 80 * ((100vw - 320px) / 920));
+                    height:calc(60px + 80 * ((100vw - 320px) / 920));
+                    background: url(https://oxxo-com.s3.amazonaws.com/media-library/165c6857ad9096e9f05789af65df7e9f.png) no-repeat center 0px / 60px;
+                    @include h2;
+                    padding-bottom: 18px;
+                    margin-bottom: -10px;
+                }
+            }
+        }
+
+    }
+
+    #pasos{
+        background: url(https://oxxo-com.s3.amazonaws.com/media-library/27f2b3a9cc097be4cee71ecb211041f6.png) no-repeat;
+        background-position: center calc(90px - 200 * ((100vw - 320px) / 420));
+        background-size: 100% calc(180px + 300 * ((100vw - 320px) / 420));
+    }
+
+    .sombrero{
+        padding: 20px 0;
+        overflow: hidden;
+        background: url(https://oxxo-com.s3.amazonaws.com/media-library/64925cff4c29083462aee707ab1c16af.png) no-repeat center -40px / cover;
+
+        #botonGirar{
+            width: 23%;
+            max-width: 90px;
+            position: absolute;
+            right: 15px;
+            top: -20px;
+            cursor: pointer;
+            z-index: 99;
+        }
+
+        &__ruleta{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: calc(20px + 0 * ((100vw - 320px) / 992)) auto;
+            position: relative;
+            transform: scale(1.1);
+            transform-origin: top;
+            height: calc(200px + 480 * ((100vw - 320px) / 992));
+            
+
+            #indicador{
+                position: absolute;
+                top:  calc(0px - 120 * ((100vw - 320px) / 992));
+                left: 0;
+                right: 0;
+                margin: auto;
+                width: 16%;
+                max-width: 100px;
+                z-index: 9;
+            }
+ 
+            #copa{
+                position: absolute;
+                top:calc(15px - 155 * ((100vw - 320px) / 768));
+                left: 5px;
+                z-index: 9;
+            }
+
+            
+            #alaSombra{
+                position: absolute;
+                transform: scale(.9);
+                z-index: -1;
+                margin-top: 130px;
+            }
+
+            $smooth: cubic-bezier(0.25, 0.1, 0.25, 1);
+
+            #ala{   
+
+                margin-top: 130px;
+                
+                &.giroActivo{
+                    transform: rotateZ(3600deg);
+                }
+
+                &.giroDefault{
+                    transition: all 5s $smooth;
+                    transform: rotateZ(0deg);
+                }
+
+                
+                &.giro1{
+                    transition: all 5s $smooth;
+                    transform: rotateZ(30deg);
+                }
+
+                &.giro2{
+                    transition: all 5s $smooth;
+                    transform: rotate(90deg);
+                }
+
+                &.giro3{
+                    transition: all 5s $smooth;
+                    transform: rotate(150deg);
+                }
+
+                &.giro4{
+                    transition: all 5s $smooth;
+                    transform: rotate(205deg);
+                }
+
+                &.giro5{
+                    transition: all 5s $smooth;
+                    transform: rotate(270deg);
+                }
+
+                &.giro6{
+                    transition: all 5s $smooth;
+                    transform: rotate(325deg);
+                }
+            }
+        }
+
+        .disclaimer{
+            padding-bottom: 30px;
+            justify-content: center !important;
+
+            h6{
+                @include minimo;
+                color: #fff;
+                text-align: center;
+            }
+        }
+    }
+
+    .modalCupon{
+        a{
+            text-decoration: none;
+        }
+    }   
+}
+ 
+.proximamente{
+    min-height: 100vh;
+    padding: 30px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    h1, h3, h5{
+        color: #fff;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+
+
+   img{
+       margin: auto;
+       display: block;
+   }
+}
+
+@supports (-moz-appearance:none) {
+    
+    @keyframes giro{
+        0% {
+            transform: rotateZ(0deg);
+        }
+        
+        100% {
+            transform: rotateZ(360deg);
+        } 
+    }
+
+   
+    #ala.giro1{
+        animation: giro .5s linear 8;
+        transform: rotate(30deg);
+    }
+
+    #ala.giro2{
+        animation: giro .5s linear 8;
+        transform: rotate(90deg);
+    }
+
+    #ala.giro3{
+        animation: giro .5s linear 8;
+        transform: rotate(150deg);
+    }
+
+    #ala.giro4{
+        animation: giro .5s linear 8;
+        transform: rotate(205deg);
+    }
+
+    #ala.giro5{
+        animation: giro .5s linear 8;
+        transform: rotate(270deg);
+    }
+
+    #ala.giro6{
+        animation: giro .5s linear 8;
+        transform: rotate(325deg);
+    }
+}
+
+ 

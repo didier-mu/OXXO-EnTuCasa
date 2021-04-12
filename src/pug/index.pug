@@ -1,0 +1,188 @@
+- titulo = "Oxxo - En tu casa"
+
+doctype
+html(lang='es')
+
+    include includes/head.pug
+
+    body.home
+        .ruletaSombrero
+            section.header
+                .container-fluid
+                    .row.justify-content-center
+                        .col-12.col-lg-6.header--img
+                            img.img-fluid(alt src='img/logo.png')
+
+            section.bases
+                .container
+                    .row.justify-content-center
+                        .col-12.col-lg-9
+                           
+                            h3 
+                                b Gira la ruleta, descubre y disfruta
+                                    br 
+                                    | de los cupones que tenemos para ti.
+
+                            picture
+                                img.img-fluid(src="img/title1.png", alt="") 
+
+            section.bases#pasos
+                .container
+                    .row.justify-content-center        
+                        .col-12.col-lg-8
+                            h3#titleBase ¿Cómo participo?
+                            ul
+                                li Haz clic  
+                                    br 
+                                    | en el botón
+                                    br 
+                                    | “GIRAR RULETA”
+                                li Descubre
+                                    br 
+                                    | si ganaste o vuelve
+                                    br 
+                                    | a intentar
+
+                                li
+                                    | Descarga
+                                    br
+                                    | y disfruta
+            
+            section.sombrero
+                .container
+                    .row.justify-content-center
+                        .col-12.col-lg-10
+                            img.img-fluid#botonGirar(alt src='img/GIRAR.png')
+                            .sombrero__ruleta
+                                img.img-fluid#indicador(alt src='img/indicador.png')
+                                img.img-fluid#copa(alt src='img/V2.png')
+                                img.img-fluid#ala(alt src='img/V1.png')
+
+            .modal.fade#modalDefault(data-backdrop='static' data-keyboard='false' role='dialog' tabindex='-1')
+                .modal-dialog.modal-dialog-centered(role='document')
+                    .modal-content
+                        .modal-body
+                            h4 
+                                b ¡Suerte para la próxima!
+                                    br 
+                                    | Sigue participando
+
+                            img.img-fluid(src="img/mono.png", alt="")
+                            
+                            input.btnOn(aria-label='Close' data-dismiss='modal' type='button' value='Volver a girar')
+
+            .modal.fade#modalCupon(data-backdrop='static' data-keyboard='false' role='dialog' tabindex='-1')
+                .modal-dialog.modal-dialog-centered(role='document')
+                    .modal-content
+                        .closeModal(aria-label='Close' data-dismiss='modal' type='button')
+                            img.img-fluid(alt src='https://oxxo-com.s3.amazonaws.com/media-library/47cb78aefa4753cd42e978980d39b014.png')
+                            
+                        .modal-body.modal-felicidades
+                            h4
+                                b ¡Felicidades!
+                                br 
+                                | Has ganado un cupón
+
+                            img.img-fluid(src="img/mono2.png", alt="")
+                            //- img.img-fluid#cupon(alt src='img/cupon.jpg')
+
+                            a.linkCupon#cuponNormal(href='#')
+                                input.btnOn(type='button' value='Obtener cupón')
+
+                        .modal-body.modal-sesion
+                            .cajaSesion
+
+                                h1 Inicia sesión
+                                h4 para obtener tu cupón
+
+                                .checkboxes.cajaL#checkboxLegales1
+                                    input.checkbox.checkL#checkLegale1(type='checkbox')
+                                    div.checkmark
+                                        label(for='checkLegale1')
+                                    label.labelLegales#labelLegales(for='checkLegale1') Acepto los 
+                                        a(data-dismiss='modal' data-target='#modalLegales' data-toggle='modal') Términos y Condiciones
+
+                                .checkboxes.cajaEdad#checkboxEdad1
+                                    input.checkbox.checkE#checkEdad1(type='checkbox')
+                                    div.checkmark
+                                        label(for='checkEdad1')
+                                    label.labelLegales#labelEdad(for='checkEdad1') Acepto que soy mayor de 18 años
+
+                                h6 Tu información es 100% confidencial
+
+                                .botonera
+                                    a.linkLogin.LinkCuponNormalFb(href='#')
+                                        img.img-fluid(alt='Oxxo facebook' src='https://oxxo-com.s3.amazonaws.com/media-library/08a90345b224d354d5387d186c3304ca.jpg')
+                                    a.linkLogin.LinkCuponNormalGl(href='#')
+                                        img.img-fluid(alt='Oxxo google' src='https://oxxo-com.s3.amazonaws.com/media-library/145062d27edf2a870fe1c1eb4dd415d4.jpg')
+
+                                    a.btn.btn-danger.btn-lg.linkContinuar(href='#') Continuar
+
+
+            .modal.fade#modalCuponEspecial(data-backdrop='static' data-keyboard='false' role='dialog' tabindex='-1')
+                .modal-dialog.modal-dialog-centered(role='document')
+                    .modal-content
+                        .closeModal(aria-label='Close' data-dismiss='modal' type='button')
+                            img.img-fluid(alt src='https://oxxo-com.s3.amazonaws.com/media-library/47cb78aefa4753cd42e978980d39b014.png')
+
+                        .modal-body.modal-felicidades
+                            h4
+                                b ¡Felicidades!
+
+                                br 
+                                | Has ganado un premio especial
+                                //- p Tienes 5 minutos para obtener el cupón
+
+                            //- img.img-fluid.cuponEsp#cupon(alt src)
+                            img.img-fluid(src="img/cuponEspecial.png")
+
+                            form#formCupon(method='post')
+                                a.linkCupon#ObtCupon
+                                    input.btnOn#btnAparta(type='button' value='Obtener cupón')
+                                |  
+                                input#mycupon(name='apartado' type='hidden' value)
+
+                        .modal-body.modal-sesion
+                            .cajaSesion
+
+                                h1 Inicia sesión
+                                h4 para obtener tu cupón
+
+                                .checkboxes.cajaL#checkboxLegales2
+                                    input.checkbox.checkL#checkLegale2(type='checkbox')
+                                    div.checkmark
+                                        label(for='checkLegale2')
+                                    label.labelLegales#labelLegales2(for='checkLegale2') Acepto los 
+                                        a(data-dismiss='modal' data-target='#modalLegales' data-toggle='modal') Términos y Condiciones
+
+                                .checkboxes.cajaEdad#checkboxEdad2
+                                    input.checkbox.checkE#checkEdad2(type='checkbox')
+                                    div.checkmark
+                                        label(for='checkEdad2')
+                                    label.labelLegales#labelEdad2(for='checkEdad2') Acepto que soy mayor de 18 años
+
+                                h6 Tu información es 100% confidencial
+
+                                .botonera
+                                    a.linkLogin.LinkCuponNormalFb(href='#')
+                                        img.img-fluid(alt='Oxxo facebook' src='https://oxxo-com.s3.amazonaws.com/media-library/08a90345b224d354d5387d186c3304ca.jpg')
+                                    a.linkLogin.LinkCuponNormalGl(href='#')
+                                        img.img-fluid(alt='Oxxo google' src='https://oxxo-com.s3.amazonaws.com/media-library/145062d27edf2a870fe1c1eb4dd415d4.jpg')
+
+                                    a.btn.btn-danger.btn-lg.linkContinuar(href='#') Continuar
+
+
+            .modal.fade#modalLegales(role='dialog' tabindex='-1')
+                .modal-dialog.modal-dialog-centered(role='document')
+                    .modal-content
+                        .closeModal(aria-label='Close' data-dismiss='modal' data-target='#modalLegales' type='button')
+                            img.img-fluid(alt src='https://oxxo-com.s3.amazonaws.com/media-library/47cb78aefa4753cd42e978980d39b014.png')
+                        .modal-body
+                            h5 TÉRMINOS Y CONDICIONES
+                            p Límite: Solo una (1) oferta especial de Xbox Game Pass Ultimate por cliente. Oferta válida del 29 de abril al 02 de mayo 2020. Utiliza tu membresía activa de Xbox Game Pass Ultimate para jugar juegos en Xbox One y en PC con Windows 10. Incluye el plan de juegos de consola de Xbox Game Pass, el plan de juegos de PC de Xbox Game Pass y Xbox Live Gold. Los títulos y el número de juegos varían con el tiempo y según el país. Si tu membresía finaliza o si un juego es retirado, debes reactivar tu membresía o comprar el juego para seguir usando cualquier añadido o artículo comprado para un juego. Aplican cuotas del proveedor de servicios de internet y restricciones por edad. Aplican términos y condiciones a las ofertas de descuento. El servicio, las funciones y los requerimientos pueden cambiar o ser retirados. Sujeto al acuerdo de servicios de Microsoft (microsoft.com/msa).  Si ya eres miembro de Xbox Game Pass o de Xbox Live Gold, los días que resten en tu membresía (o membresías) serán convertidos a Ultimate usando una tasa de conversión. Los canjes futuros de códigos también estarán sujetos a la tasa de conversión. Todas las conversiones a Ultimate serán definitivas. Conoce cómo funciona esto en xbox.com/gamepass.  Para PC: Se requiere la descarga de una aplicación, actualización (o actualizaciones) de Windows y almacenamiento (xbox.com/pcgamesplan). Los requerimientos del sistema varían según el juego; el desempeño se balancea con sistemas de gama alta. Salvo cuando lo exija la ley, los códigos no son reembolsables.           
+
+
+
+
+
+

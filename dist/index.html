@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="img/logos/favicon.ico" type="image/x-icon">
+    <title>Oxxo - En tu casa</title>
+    <link rel="stylesheet" href="css/styles.min.css">
+    <script src="js/scripts.min.js" async defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  </head>
+  <body class="home">
+    <div class="ruletaSombrero">
+      <section class="header">
+        <div class="container-fluid">
+          <div class="row justify-content-center">
+            <div class="col-12 col-lg-6 header--img"><img class="img-fluid" alt src="img/logo.png"></div>
+          </div>
+        </div>
+      </section>
+      <section class="bases">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-12 col-lg-9">
+              <h3> <b>Gira la ruleta, descubre y disfruta<br>de los cupones que tenemos para ti.</b></h3>
+              <picture><img class="img-fluid" src="img/title1.png" alt=""></picture>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="bases" id="pasos">
+        <div class="container">
+          <div class="row justify-content-center">       
+            <div class="col-12 col-lg-8">
+              <h3 id="titleBase">¿Cómo participo?</h3>
+              <ul>
+                <li>Haz clic  <br>en el botón<br>“GIRAR RULETA”</li>
+                <li>Descubre<br>si ganaste o vuelve<br>a intentar</li>
+                <li>Descarga<br>y disfruta</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="sombrero">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-12 col-lg-10"><img class="img-fluid" id="botonGirar" alt src="img/GIRAR.png">
+              <div class="sombrero__ruleta"><img class="img-fluid" id="indicador" alt src="img/indicador.png"><img class="img-fluid" id="copa" alt src="img/V2.png"><img class="img-fluid" id="ala" alt src="img/V1.png"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <div class="modal fade" id="modalDefault" data-backdrop="static" data-keyboard="false" role="dialog" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-body">
+              <h4> <b>¡Suerte para la próxima!<br>Sigue participando</b></h4><img class="img-fluid" src="img/mono.png" alt="">
+              <input class="btnOn" aria-label="Close" data-dismiss="modal" type="button" value="Volver a girar">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal fade" id="modalCupon" data-backdrop="static" data-keyboard="false" role="dialog" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="closeModal" aria-label="Close" data-dismiss="modal" type="button"><img class="img-fluid" alt src="https://oxxo-com.s3.amazonaws.com/media-library/47cb78aefa4753cd42e978980d39b014.png"></div>
+            <div class="modal-body modal-felicidades">
+              <h4><b>¡Felicidades!</b><br>Has ganado un cupón</h4><img class="img-fluid" src="img/mono2.png" alt=""><a class="linkCupon" id="cuponNormal" href="#">
+                <input class="btnOn" type="button" value="Obtener cupón"></a>
+            </div>
+            <div class="modal-body modal-sesion">
+              <div class="cajaSesion">
+                <h1>Inicia sesión</h1>
+                <h4>para obtener tu cupón</h4>
+                <div class="checkboxes cajaL" id="checkboxLegales1">
+                  <input class="checkbox checkL" id="checkLegale1" type="checkbox">
+                  <div class="checkmark">
+                    <label for="checkLegale1"></label>
+                  </div>
+                  <label class="labelLegales" id="labelLegales" for="checkLegale1">Acepto los <a data-dismiss="modal" data-target="#modalLegales" data-toggle="modal">Términos y Condiciones</a></label>
+                </div>
+                <div class="checkboxes cajaEdad" id="checkboxEdad1">
+                  <input class="checkbox checkE" id="checkEdad1" type="checkbox">
+                  <div class="checkmark">
+                    <label for="checkEdad1"></label>
+                  </div>
+                  <label class="labelLegales" id="labelEdad" for="checkEdad1">Acepto que soy mayor de 18 años</label>
+                </div>
+                <h6>Tu información es 100% confidencial</h6>
+                <div class="botonera"><a class="linkLogin LinkCuponNormalFb" href="#"><img class="img-fluid" alt="Oxxo facebook" src="https://oxxo-com.s3.amazonaws.com/media-library/08a90345b224d354d5387d186c3304ca.jpg"></a><a class="linkLogin LinkCuponNormalGl" href="#"><img class="img-fluid" alt="Oxxo google" src="https://oxxo-com.s3.amazonaws.com/media-library/145062d27edf2a870fe1c1eb4dd415d4.jpg"></a><a class="btn btn-danger btn-lg linkContinuar" href="#">Continuar</a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal fade" id="modalCuponEspecial" data-backdrop="static" data-keyboard="false" role="dialog" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="closeModal" aria-label="Close" data-dismiss="modal" type="button"><img class="img-fluid" alt src="https://oxxo-com.s3.amazonaws.com/media-library/47cb78aefa4753cd42e978980d39b014.png"></div>
+            <div class="modal-body modal-felicidades">
+              <h4><b>¡Felicidades!</b><br>Has ganado un premio especial</h4><img class="img-fluid" src="img/cuponEspecial.png">
+              <form id="formCupon" method="post"><a class="linkCupon" id="ObtCupon">
+                  <input class="btnOn" id="btnAparta" type="button" value="Obtener cupón"></a> 
+                <input id="mycupon" name="apartado" type="hidden" value>
+              </form>
+            </div>
+            <div class="modal-body modal-sesion">
+              <div class="cajaSesion">
+                <h1>Inicia sesión</h1>
+                <h4>para obtener tu cupón</h4>
+                <div class="checkboxes cajaL" id="checkboxLegales2">
+                  <input class="checkbox checkL" id="checkLegale2" type="checkbox">
+                  <div class="checkmark">
+                    <label for="checkLegale2"></label>
+                  </div>
+                  <label class="labelLegales" id="labelLegales2" for="checkLegale2">Acepto los <a data-dismiss="modal" data-target="#modalLegales" data-toggle="modal">Términos y Condiciones</a></label>
+                </div>
+                <div class="checkboxes cajaEdad" id="checkboxEdad2">
+                  <input class="checkbox checkE" id="checkEdad2" type="checkbox">
+                  <div class="checkmark">
+                    <label for="checkEdad2"></label>
+                  </div>
+                  <label class="labelLegales" id="labelEdad2" for="checkEdad2">Acepto que soy mayor de 18 años</label>
+                </div>
+                <h6>Tu información es 100% confidencial</h6>
+                <div class="botonera"><a class="linkLogin LinkCuponNormalFb" href="#"><img class="img-fluid" alt="Oxxo facebook" src="https://oxxo-com.s3.amazonaws.com/media-library/08a90345b224d354d5387d186c3304ca.jpg"></a><a class="linkLogin LinkCuponNormalGl" href="#"><img class="img-fluid" alt="Oxxo google" src="https://oxxo-com.s3.amazonaws.com/media-library/145062d27edf2a870fe1c1eb4dd415d4.jpg"></a><a class="btn btn-danger btn-lg linkContinuar" href="#">Continuar</a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal fade" id="modalLegales" role="dialog" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="closeModal" aria-label="Close" data-dismiss="modal" data-target="#modalLegales" type="button"><img class="img-fluid" alt src="https://oxxo-com.s3.amazonaws.com/media-library/47cb78aefa4753cd42e978980d39b014.png"></div>
+            <div class="modal-body">
+              <h5>TÉRMINOS Y CONDICIONES</h5>
+              <p>Límite: Solo una (1) oferta especial de Xbox Game Pass Ultimate por cliente. Oferta válida del 29 de abril al 02 de mayo 2020. Utiliza tu membresía activa de Xbox Game Pass Ultimate para jugar juegos en Xbox One y en PC con Windows 10. Incluye el plan de juegos de consola de Xbox Game Pass, el plan de juegos de PC de Xbox Game Pass y Xbox Live Gold. Los títulos y el número de juegos varían con el tiempo y según el país. Si tu membresía finaliza o si un juego es retirado, debes reactivar tu membresía o comprar el juego para seguir usando cualquier añadido o artículo comprado para un juego. Aplican cuotas del proveedor de servicios de internet y restricciones por edad. Aplican términos y condiciones a las ofertas de descuento. El servicio, las funciones y los requerimientos pueden cambiar o ser retirados. Sujeto al acuerdo de servicios de Microsoft (microsoft.com/msa).  Si ya eres miembro de Xbox Game Pass o de Xbox Live Gold, los días que resten en tu membresía (o membresías) serán convertidos a Ultimate usando una tasa de conversión. Los canjes futuros de códigos también estarán sujetos a la tasa de conversión. Todas las conversiones a Ultimate serán definitivas. Conoce cómo funciona esto en xbox.com/gamepass.  Para PC: Se requiere la descarga de una aplicación, actualización (o actualizaciones) de Windows y almacenamiento (xbox.com/pcgamesplan). Los requerimientos del sistema varían según el juego; el desempeño se balancea con sistemas de gama alta. Salvo cuando lo exija la ley, los códigos no son reembolsables.           </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
